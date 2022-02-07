@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 
 class SectionHorizontal extends StatelessWidget {
   final String title;
+  final List<dynamic> sectionData;
   const SectionHorizontal({
     required this.title,
+    required this.sectionData,
     Key? key,
   }) : super(key: key);
 
@@ -24,9 +26,9 @@ class SectionHorizontal extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: 200,
+            height: 250,
             child: ListView.builder(
-              itemCount: 10,
+              itemCount: sectionData.length,
               itemBuilder: (context, index) => Container(
                 margin: EdgeInsets.only(left: 16),
                 width: 150,
@@ -36,7 +38,7 @@ class SectionHorizontal extends StatelessWidget {
                     ClipRRect(
                       borderRadius: BorderRadius.circular(12),
                       child: Image.network(
-                        "https://blog.giallozafferano.it/francinut87/wp-content/uploads/2021/04/Pizza-margherita-fatta-in-casa-orizzontale.jpg",
+                        sectionData[index].picture,
                         height: 150,
                         fit: BoxFit.cover,
                       ),
@@ -47,8 +49,21 @@ class SectionHorizontal extends StatelessWidget {
                         vertical: 8,
                       ),
                       child: Text(
-                        'nome podcast',
+                        sectionData[index].title,
                         style: TextStyle(fontWeight: FontWeight.w600),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 12.0,
+                      ),
+                      child: Text(
+                        sectionData[index].artist,
+                        style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                          color: Colors.white54,
+                          fontSize: 12,
+                        ),
                       ),
                     ),
                   ],
