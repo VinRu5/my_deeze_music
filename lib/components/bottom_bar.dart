@@ -7,7 +7,12 @@ import 'package:my_deeze_music/pages/search_page.dart';
 import 'package:my_deeze_music/theme/colors.dart';
 
 class BottomBar extends StatelessWidget {
-  const BottomBar({Key? key}) : super(key: key);
+  final String currentPage;
+
+  const BottomBar({
+    required this.currentPage,
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,28 +22,34 @@ class BottomBar extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           BottomButtom(
-            icon: Icons.music_note,
+            icon: currentPage == 'home'
+                ? Icons.music_note
+                : Icons.music_note_outlined,
             text: 'Musica',
             onPressed: () {
               Navigator.pushNamed(context, HomePage.route);
             },
           ),
           BottomButtom(
-            icon: Icons.mic,
+            icon: currentPage == 'podcast' ? Icons.mic : Icons.mic_outlined,
             text: 'Podcast',
             onPressed: () {
               Navigator.pushNamed(context, PodcastPage.route);
             },
           ),
           BottomButtom(
-            icon: Icons.favorite,
+            icon: currentPage == 'podcast'
+                ? Icons.favorite
+                : Icons.favorite_outlined,
             text: 'Preferiti',
             onPressed: () {
               Navigator.pushNamed(context, FavoritePage.route);
+              ;
             },
           ),
           BottomButtom(
-            icon: Icons.search,
+            icon:
+                currentPage == 'podcast' ? Icons.search : Icons.search_outlined,
             text: 'Cerca',
             onPressed: () {
               Navigator.pushNamed(context, SearchPage.route);

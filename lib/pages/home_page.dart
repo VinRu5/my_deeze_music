@@ -12,7 +12,9 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       backgroundColor: backgroundColor,
       body: BodyHome(),
-      bottomNavigationBar: BottomBar(),
+      bottomNavigationBar: BottomBar(
+        currentPage: 'home',
+      ),
     );
   }
 }

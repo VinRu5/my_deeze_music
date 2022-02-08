@@ -77,4 +77,18 @@ class MusicRepository {
 
     return artists;
   }
+
+  static Future<List<Track>> search(String inputSearch) async {
+    final url = Uri.parse('https://api.deezer.com/search?q=$inputSearch');
+
+    final response = await http.get(url);
+
+    final jsonData = json.decode(response.body);
+
+    final tracks = (jsonData['data'] as List<dynamic>).map((track) {
+      return Track.fromData(track);
+    }).toList();
+
+    return tracks;
+  }
 }
