@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:my_deeze_music/bloc/albums_bloc.dart';
+
+import 'package:my_deeze_music/bloc/music_bloc.dart';
+import 'package:my_deeze_music/components/app_sliver.dart';
 import 'package:my_deeze_music/components/section_horizontal.dart';
-import 'package:my_deeze_music/model/podcast.dart';
-import 'package:my_deeze_music/repository/music_repository.dart';
-import 'package:my_deeze_music/theme/colors.dart';
+import 'package:my_deeze_music/components/section_horizontal_circle.dart';
+import 'package:my_deeze_music/components/section_horizontal_stretch.dart';
+import 'package:my_deeze_music/components/text_section.dart';
 
 class BodyHome extends StatefulWidget {
   const BodyHome({Key? key}) : super(key: key);
@@ -14,60 +16,55 @@ class BodyHome extends StatefulWidget {
 }
 
 class _BodyHomeState extends State<BodyHome> {
-  //late Future<List<Podcast>> podcasts;
-
   @override
   void initState() {
     super.initState();
-    BlocProvider.of<AlbumsBloc>(context).add(AlbumsBlocEventInit());
-    //podcasts = PodcastRepository.topPodcast();
+    BlocProvider.of<MusicBloc>(context).add(MusicBlocEventInit());
   }
 
   @override
   Widget build(BuildContext context) {
     //return Container();
-    return BlocBuilder<AlbumsBloc, AlbumsBlocState>(builder: (context, state) {
-      if (state is AlbumsBlocStateLoading) {
+    return BlocBuilder<MusicBloc, MusicBlocState>(builder: (context, state) {
+      if (state is MusicBlocStateLoading) {
         return Center(
           child: CircularProgressIndicator(),
         );
       } else {
-        final albums = (state as AlbumsBlocStateLoaded).albums;
+        final stateMusic = (state as MusicBlocStateLoaded);
+        final albums = stateMusic.albums;
+        final artists = stateMusic.artists;
+        final playlists = stateMusic.playlists;
+        final podcasts = stateMusic.podcasts;
+        final tracks = stateMusic.tracks;
 
         return SafeArea(
           child: Padding(
             padding: const EdgeInsets.fromLTRB(0, 24, 0, 32),
             child: CustomScrollView(
               slivers: [
-                SliverAppBar(
-                  backgroundColor: backgroundColor,
-                  actions: [
-                    IconButton(
-                      onPressed: () {},
-                      icon: Icon(Icons.notifications),
-                    ),
-                    IconButton(
-                      onPressed: () {},
-                      icon: Icon(Icons.settings),
-                    ),
-                  ],
+                AppSliver(),
+                TextSection(title: 'Musica'),
+                SectionHorizontalCircle(
+                  title: 'Top Artisti',
+                  sectionData: artists,
                 ),
-                SliverToBoxAdapter(
-                  child: Padding(
-                    padding: EdgeInsets.all(16),
-                    child: Text(
-                      'Musica',
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
+                SectionHorizontal(
+                  title: 'Le canzoni più ascoltate del momento',
+                  sectionData: tracks,
                 ),
                 SectionHorizontal(
                   title: 'Album Popolari',
                   sectionData: albums,
-                )
+                ),
+                SectionHorizontalStretch(
+                  title: 'Podcast',
+                  sectionData: podcasts,
+                ),
+                SectionHorizontal(
+                  title: 'Playlist di successo',
+                  sectionData: playlists,
+                ),
               ],
             ),
           ),

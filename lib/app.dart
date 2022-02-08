@@ -15,7 +15,10 @@ class App extends StatelessWidget {
 
         return MaterialPageRoute(builder: routes[settings.name]!);
       },
-      theme: ThemeData(brightness: Brightness.dark, fontFamily: 'Mabry'),
+      theme: ThemeData(
+        brightness: Brightness.dark,
+        fontFamily: 'Mabry',
+      ),
     );
   }
 }

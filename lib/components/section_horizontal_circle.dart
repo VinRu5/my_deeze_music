@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-class SectionHorizontal extends StatelessWidget {
+class SectionHorizontalCircle extends StatelessWidget {
   final String title;
   final List<dynamic> sectionData;
-  const SectionHorizontal({
+  const SectionHorizontalCircle({
     required this.title,
     required this.sectionData,
     Key? key,
@@ -33,15 +33,10 @@ class SectionHorizontal extends StatelessWidget {
                 margin: EdgeInsets.only(left: 16),
                 width: 150,
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(12),
-                      child: Image.network(
-                        sectionData[index].picture,
-                        height: 150,
-                        fit: BoxFit.cover,
-                      ),
+                    CircleAvatar(
+                      backgroundImage: NetworkImage(sectionData[index].picture),
+                      radius: 80,
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(
@@ -49,20 +44,10 @@ class SectionHorizontal extends StatelessWidget {
                         vertical: 8,
                       ),
                       child: Text(
-                        sectionData[index].title,
-                        style: TextStyle(fontWeight: FontWeight.w600),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 12.0,
-                      ),
-                      child: Text(
-                        sectionData[index].artist,
+                        sectionData[index].name,
                         style: TextStyle(
                           fontWeight: FontWeight.w600,
-                          color: Colors.white54,
-                          fontSize: 12,
+                          fontSize: 16,
                         ),
                       ),
                     ),

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-class SectionHorizontal extends StatelessWidget {
+class SectionHorizontalStretch extends StatelessWidget {
   final String title;
   final List<dynamic> sectionData;
-  const SectionHorizontal({
+  const SectionHorizontalStretch({
     required this.title,
     required this.sectionData,
     Key? key,
@@ -26,20 +26,28 @@ class SectionHorizontal extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: 250,
+            height: 300,
             child: ListView.builder(
               itemCount: sectionData.length,
               itemBuilder: (context, index) => Container(
                 margin: EdgeInsets.only(left: 16),
                 width: 150,
+                decoration: BoxDecoration(
+                  color: Colors.white24,
+                  borderRadius: BorderRadius.circular(12),
+                ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     ClipRRect(
-                      borderRadius: BorderRadius.circular(12),
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(12),
+                        topRight: Radius.circular(12),
+                      ),
                       child: Image.network(
                         sectionData[index].picture,
-                        height: 150,
+                        width: double.infinity,
+                        height: 120,
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -58,7 +66,9 @@ class SectionHorizontal extends StatelessWidget {
                         horizontal: 12.0,
                       ),
                       child: Text(
-                        sectionData[index].artist,
+                        sectionData[index].description,
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 6,
                         style: TextStyle(
                           fontWeight: FontWeight.w600,
                           color: Colors.white54,
