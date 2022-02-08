@@ -26,7 +26,8 @@ class SearchBar extends StatelessWidget {
             ),
             onPressed: () {
               BlocProvider.of<SearchBloc>(context)
-                  .add(SearchBlocEventGet('ciao'));
+                  .add(SearchBlocEventGet(searchString.text));
+              searchString.clear();
             },
           ),
           hintText: 'Cerca la tua musica...',

@@ -5,6 +5,7 @@ import 'package:my_deeze_music/components/app_sliver.dart';
 import 'package:my_deeze_music/components/loading.dart';
 import 'package:my_deeze_music/components/search_bar.dart';
 import 'package:my_deeze_music/components/text_section.dart';
+import 'package:my_deeze_music/model/track.dart';
 
 class BodySearch extends StatelessWidget {
   const BodySearch({Key? key}) : super(key: key);
@@ -21,8 +22,9 @@ class BodySearch extends StatelessWidget {
           );
 
         case SearchBlocStateLoaded:
+          final searchedSongs = (state as SearchBlocStateLoaded).searchedSongs;
           return BasePage(
-            child: LoadedPage(),
+            child: LoadedPage(searchedSongs),
           );
 
         default:
@@ -53,17 +55,28 @@ class BasePage extends StatelessWidget {
 }
 
 class LoadedPage extends StatelessWidget {
-  const LoadedPage({
+  final List<Track> searchedSongs;
+  const LoadedPage(
+    this.searchedSongs, {
     Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) => SliverList(
         delegate: SliverChildBuilderDelegate(
-          (context, index) => ListTile(
-            title: Text('ciao'),
+          (context, index) => Padding(
+            padding: const EdgeInsets.symmetric(vertical: 2.0),
+            child: ListTile(
+              leading: ClipRRect(
+                borderRadius: BorderRadius.circular(8),
+                child: Image.network(searchedSongs[index].picture),
+              ),
+              title: Text(searchedSongs[index].title),
+              subtitle: Text(searchedSongs[index].artist),
+              trailing: Icon(Icons.play_circle_outline),
+            ),
           ),
-          childCount: 10,
+          childCount: searchedSongs.length,
         ),
       );
 }
@@ -75,11 +88,64 @@ class StaticPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => SliverList(
-        delegate: SliverChildBuilderDelegate(
-          (context, index) => ListTile(
-            title: Text('static'),
+        delegate: SliverChildListDelegate([
+          ListTile(
+            leading: ClipRRect(
+              borderRadius: BorderRadius.circular(8),
+              child: Container(
+                padding: EdgeInsets.symmetric(horizontal: 3),
+                height: double.infinity,
+                width: 50,
+                decoration: BoxDecoration(
+                  color: Colors.orangeAccent,
+                ),
+                child: Image.asset(
+                  'assets/images/deezer.png',
+                ),
+              ),
+            ),
+            title: Text('Cerca tutta la musica che vuoi'),
+            subtitle: Text('Aggiungi ai tuoi preferiti'),
+            trailing: Icon(Icons.play_circle_outline),
           ),
-          childCount: 10,
-        ),
+          ListTile(
+            leading: ClipRRect(
+              borderRadius: BorderRadius.circular(8),
+              child: Container(
+                padding: EdgeInsets.symmetric(horizontal: 3),
+                height: double.infinity,
+                width: 50,
+                decoration: BoxDecoration(
+                  color: Colors.blueAccent.shade200,
+                ),
+                child: Image.asset(
+                  'assets/images/deezer.png',
+                ),
+              ),
+            ),
+            title: Text('Cerca tutta la musica che vuoi'),
+            subtitle: Text('Aggiungi ai tuoi preferiti'),
+            trailing: Icon(Icons.play_circle_outline),
+          ),
+          ListTile(
+            leading: ClipRRect(
+              borderRadius: BorderRadius.circular(8),
+              child: Container(
+                padding: EdgeInsets.symmetric(horizontal: 3),
+                height: double.infinity,
+                width: 50,
+                decoration: BoxDecoration(
+                  color: Colors.lightGreen,
+                ),
+                child: Image.asset(
+                  'assets/images/deezer.png',
+                ),
+              ),
+            ),
+            title: Text('Cerca tutta la musica che vuoi'),
+            subtitle: Text('Aggiungi ai tuoi preferiti'),
+            trailing: Icon(Icons.play_circle_outline),
+          ),
+        ]),
       );
 }
