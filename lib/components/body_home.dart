@@ -28,7 +28,9 @@ class _BodyHomeState extends State<BodyHome> {
     return BlocBuilder<MusicBloc, MusicBlocState>(builder: (context, state) {
       if (state is MusicBlocStateLoading) {
         return Center(
-          child: CircularProgressIndicator(),
+          child: CircularProgressIndicator(
+            color: Colors.white,
+          ),
         );
       } else {
         final stateMusic = (state as MusicBlocStateLoaded);
