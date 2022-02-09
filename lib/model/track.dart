@@ -28,4 +28,14 @@ class Track {
       album: album,
     );
   }
+
+  factory Track.fromRecord(Map<String, dynamic> data) {
+    return Track(
+      id: data['id_deeze'],
+      picture: data['picture'],
+      title: data['title'],
+      artist: data['artist'],
+      album: data['album'],
+    );
+  }
 }

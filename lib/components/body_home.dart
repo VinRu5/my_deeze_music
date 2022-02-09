@@ -6,6 +6,7 @@ import 'package:my_deeze_music/components/app_sliver.dart';
 import 'package:my_deeze_music/components/section_horizontal.dart';
 import 'package:my_deeze_music/components/section_horizontal_circle.dart';
 import 'package:my_deeze_music/components/section_horizontal_stretch.dart';
+import 'package:my_deeze_music/components/section_horizontal_track.dart';
 import 'package:my_deeze_music/components/text_section.dart';
 
 class BodyHome extends StatefulWidget {
@@ -51,7 +52,7 @@ class _BodyHomeState extends State<BodyHome> {
                   title: 'Top Artisti',
                   sectionData: artists,
                 ),
-                SectionHorizontal(
+                SectionHorizontalTrack(
                   title: 'Le canzoni più ascoltate del momento',
                   sectionData: tracks,
                 ),

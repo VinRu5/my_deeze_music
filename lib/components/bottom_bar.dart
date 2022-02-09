@@ -44,7 +44,6 @@ class BottomBar extends StatelessWidget {
             text: 'Preferiti',
             onPressed: () {
               Navigator.pushNamed(context, FavoritePage.route);
-              ;
             },
           ),
           BottomButtom(
