@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:my_deeze_music/bloc/search_bloc.dart';
 import 'package:my_deeze_music/components/app_sliver.dart';
+import 'package:my_deeze_music/components/button_favorite.dart';
 import 'package:my_deeze_music/components/loading.dart';
 import 'package:my_deeze_music/components/search_bar.dart';
 import 'package:my_deeze_music/components/text_section.dart';
@@ -73,7 +74,7 @@ class LoadedPage extends StatelessWidget {
               ),
               title: Text(searchedSongs[index].title),
               subtitle: Text(searchedSongs[index].artist),
-              trailing: Icon(Icons.play_circle_outline),
+              trailing: ButtonFavorite(track: searchedSongs[index]),
             ),
           ),
           childCount: searchedSongs.length,
