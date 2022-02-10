@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:my_deeze_music/bloc/album_bloc.dart';
 import 'package:my_deeze_music/components/app_sliver_details.dart';
+import 'package:my_deeze_music/components/button_favorite.dart';
+import 'package:my_deeze_music/components/list_track.dart';
 import 'package:my_deeze_music/components/loading.dart';
 import 'package:my_deeze_music/components/text_section.dart';
 import 'package:my_deeze_music/model/album.dart';
@@ -68,10 +70,9 @@ class _AlbumDetailsState extends State<AlbumDetails> {
               ),
               SliverList(
                 delegate: SliverChildBuilderDelegate(
-                    (context, index) => ListTile(
-                          title: Text(tracks[index].title),
-                        ),
-                    childCount: tracks.length),
+                  (context, index) => ListTrack(track: tracks[index]),
+                  childCount: tracks.length,
+                ),
               ),
             ],
           );

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:my_deeze_music/bloc/favorite_bloc.dart';
 
 import 'package:my_deeze_music/bloc/music_bloc.dart';
 import 'package:my_deeze_music/components/app_sliver.dart';
@@ -20,6 +21,7 @@ class _BodyHomeState extends State<BodyHome> {
   void initState() {
     super.initState();
     BlocProvider.of<MusicBloc>(context).add(MusicBlocEventInit());
+    BlocProvider.of<FavoriteBloc>(context).add(FavoriteBlocEventInit());
   }
 
   @override

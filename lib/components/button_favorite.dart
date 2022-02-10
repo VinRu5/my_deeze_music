@@ -19,7 +19,8 @@ class _ButtonFavoriteState extends State<ButtonFavorite> {
   @override
   void initState() {
     super.initState();
-    BlocProvider.of<FavoriteBloc>(context).add(FavoriteBlocEventInit());
+    print(widget.track);
+    //BlocProvider.of<FavoriteBloc>(context).add(FavoriteBlocEventInit());
   }
 
   @override

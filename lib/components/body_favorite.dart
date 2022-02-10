@@ -17,7 +17,7 @@ class _BodyFavoriteState extends State<BodyFavorite> {
   @override
   void initState() {
     super.initState();
-    BlocProvider.of<FavoriteBloc>(context).add(FavoriteBlocEventInit());
+    //BlocProvider.of<FavoriteBloc>(context).add(FavoriteBlocEventInit());
   }
 
   @override
