@@ -1,3 +1,5 @@
+import 'package:my_deeze_music/model/album.dart';
+
 class Track {
   final int id;
   final String title;
@@ -26,6 +28,20 @@ class Track {
       title: title,
       artist: artist,
       album: album,
+    );
+  }
+
+  factory Track.fromDataAlbum(Map<String, dynamic> data, Album album) {
+    final int id = data['id'];
+    final String title = data['title'];
+    final String artist = data['artist']['name'];
+
+    return Track(
+      id: id,
+      picture: album.picture,
+      title: title,
+      artist: artist,
+      album: album.title,
     );
   }
 

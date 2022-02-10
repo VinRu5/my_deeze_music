@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:my_deeze_music/model/album.dart';
 import 'package:my_deeze_music/model/playlist.dart';
 import 'package:my_deeze_music/model/track.dart';
+import 'package:my_deeze_music/pages/album_details.dart';
+import 'package:my_deeze_music/pages/playlist_details.dart';
 import 'package:my_deeze_music/pages/track_details.dart';
 
 class SectionHorizontal extends StatelessWidget {
@@ -21,10 +23,12 @@ class SectionHorizontal extends StatelessWidget {
             arguments: TrackDetailsArgs(track: data));
         break;
       case Playlist:
-        print('playlist');
+        Navigator.pushNamed(context, PlaylistDetails.route,
+            arguments: PlaylistDetailsArgs(playlist: data));
         break;
       case Album:
-        print('album');
+        Navigator.pushNamed(context, AlbumDetails.route,
+            arguments: AlbumDetailsArgs(album: data));
         break;
     }
   }

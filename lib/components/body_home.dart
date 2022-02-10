@@ -6,7 +6,6 @@ import 'package:my_deeze_music/components/app_sliver.dart';
 import 'package:my_deeze_music/components/section_horizontal.dart';
 import 'package:my_deeze_music/components/section_horizontal_circle.dart';
 import 'package:my_deeze_music/components/section_horizontal_stretch.dart';
-import 'package:my_deeze_music/components/section_horizontal_track.dart';
 import 'package:my_deeze_music/components/text_section.dart';
 
 class BodyHome extends StatefulWidget {

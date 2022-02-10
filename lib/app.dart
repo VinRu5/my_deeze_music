@@ -22,9 +22,13 @@ class App extends StatelessWidget {
           PodcastPage.route: (_) => PodcastPage(),
           FavoritePage.route: (_) => FavoritePage(),
           SearchPage.route: (_) => SearchPage(),
-          AlbumDetails.route: (_) => AlbumDetails(),
+          AlbumDetails.route: (_) => AlbumDetails(
+                arg: settings.arguments as AlbumDetailsArgs,
+              ),
           ArtistDetails.route: (_) => ArtistDetails(),
-          PlaylistDetails.route: (_) => PlaylistDetails(),
+          PlaylistDetails.route: (_) => PlaylistDetails(
+                arg: settings.arguments as PlaylistDetailsArgs,
+              ),
           PodcastDetails.route: (_) => PodcastDetails(),
           TrackDetails.route: (_) =>
               TrackDetails(arg: settings.arguments as TrackDetailsArgs),

@@ -91,4 +91,17 @@ class MusicRepository {
 
     return tracks;
   }
+
+  static Future<List<Track>> getTrackByAlbum(Album album) async {
+    final url = Uri.parse('https://api.deezer.com/album/${album.id}/tracks');
+
+    final response = await http.get(url);
+    final jsonData = json.decode(response.body);
+
+    final tracks = (jsonData['data'] as List<dynamic>).map((track) {
+      return Track.fromDataAlbum(track, album);
+    }).toList();
+
+    return tracks;
+  }
 }
