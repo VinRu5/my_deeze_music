@@ -4,24 +4,12 @@ import 'package:my_deeze_music/bloc/favorite_bloc.dart';
 import 'package:my_deeze_music/components/loading.dart';
 import 'package:my_deeze_music/model/track.dart';
 
-class ButtonFavorite extends StatefulWidget {
+class ButtonFavorite extends StatelessWidget {
   final Track track;
   const ButtonFavorite({
     required this.track,
     Key? key,
   }) : super(key: key);
-
-  @override
-  State<ButtonFavorite> createState() => _ButtonFavoriteState();
-}
-
-class _ButtonFavoriteState extends State<ButtonFavorite> {
-  @override
-  void initState() {
-    super.initState();
-    print(widget.track);
-    //BlocProvider.of<FavoriteBloc>(context).add(FavoriteBlocEventInit());
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +20,7 @@ class _ButtonFavoriteState extends State<ButtonFavorite> {
       } else {
         final favorites = (state as FavoriteBlocStateLoaded).favorites;
         final favoriteSong =
-            favorites.any((favorite) => favorite.track.id == widget.track.id);
+            favorites.any((favorite) => favorite.track.id == track.id);
 
         return Positioned(
           bottom: 10,
@@ -52,10 +40,10 @@ class _ButtonFavoriteState extends State<ButtonFavorite> {
             onPressed: () {
               if (favoriteSong) {
                 BlocProvider.of<FavoriteBloc>(context)
-                    .add(FavoriteBlocEventRemove(widget.track));
+                    .add(FavoriteBlocEventRemove(track));
               } else {
                 BlocProvider.of<FavoriteBloc>(context)
-                    .add(FavoriteBlocEventAdd(widget.track));
+                    .add(FavoriteBlocEventAdd(track));
               }
             },
           ),

@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:my_deeze_music/bloc/search_bloc.dart';
 import 'package:my_deeze_music/components/app_sliver.dart';
 import 'package:my_deeze_music/components/button_favorite.dart';
+import 'package:my_deeze_music/components/list_track.dart';
 import 'package:my_deeze_music/components/loading.dart';
 import 'package:my_deeze_music/components/search_bar.dart';
 import 'package:my_deeze_music/components/text_section.dart';
@@ -65,18 +66,7 @@ class LoadedPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) => SliverList(
         delegate: SliverChildBuilderDelegate(
-          (context, index) => Padding(
-            padding: const EdgeInsets.symmetric(vertical: 2.0),
-            child: ListTile(
-              leading: ClipRRect(
-                borderRadius: BorderRadius.circular(8),
-                child: Image.network(searchedSongs[index].picture),
-              ),
-              title: Text(searchedSongs[index].title),
-              subtitle: Text(searchedSongs[index].artist),
-              trailing: ButtonFavorite(track: searchedSongs[index]),
-            ),
-          ),
+          (context, index) => ListTrack(track: searchedSongs[index]),
           childCount: searchedSongs.length,
         ),
       );
