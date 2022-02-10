@@ -25,7 +25,9 @@ class App extends StatelessWidget {
           AlbumDetails.route: (_) => AlbumDetails(
                 arg: settings.arguments as AlbumDetailsArgs,
               ),
-          ArtistDetails.route: (_) => ArtistDetails(),
+          ArtistDetails.route: (_) => ArtistDetails(
+                arg: settings.arguments as ArtistDetailsArgs,
+              ),
           PlaylistDetails.route: (_) => PlaylistDetails(
                 arg: settings.arguments as PlaylistDetailsArgs,
               ),

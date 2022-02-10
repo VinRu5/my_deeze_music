@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:my_deeze_music/app.dart';
 import 'package:my_deeze_music/bloc/album_bloc.dart';
+import 'package:my_deeze_music/bloc/artist_bloc.dart';
 import 'package:my_deeze_music/bloc/favorite_bloc.dart';
 import 'package:my_deeze_music/bloc/music_bloc.dart';
 import 'package:my_deeze_music/bloc/search_bloc.dart';
@@ -23,6 +24,7 @@ void main() async {
       BlocProvider(create: (_) => SearchBloc()),
       BlocProvider(create: (_) => FavoriteBloc()),
       BlocProvider(create: (_) => AlbumBloc()),
+      BlocProvider(create: (_) => ArtistBloc()),
     ],
     child: App(),
   ));

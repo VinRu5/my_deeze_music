@@ -104,4 +104,19 @@ class MusicRepository {
 
     return tracks;
   }
+
+  static Future<List<Track>> getTrackByArtist(Artist artist) async {
+    final url =
+        Uri.parse('https://api.deezer.com/artist/${artist.id}/top?limit=50');
+
+    final response = await http.get(url);
+
+    final jsonData = json.decode(response.body);
+
+    final tracks = (jsonData['data'] as List<dynamic>).map((track) {
+      return Track.fromData(track);
+    }).toList();
+
+    return tracks;
+  }
 }

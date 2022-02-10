@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:my_deeze_music/bloc/artist_bloc.dart';
+import 'package:my_deeze_music/pages/artist_details.dart';
 
 class SectionHorizontalCircle extends StatelessWidget {
   final String title;
@@ -32,26 +35,38 @@ class SectionHorizontalCircle extends StatelessWidget {
               itemBuilder: (context, index) => Container(
                 margin: EdgeInsets.only(left: 16),
                 width: 150,
-                child: Column(
-                  children: [
-                    CircleAvatar(
-                      backgroundImage: NetworkImage(sectionData[index].picture),
-                      radius: 80,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 12.0,
-                        vertical: 8,
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.pushNamed(
+                      context,
+                      ArtistDetails.route,
+                      arguments: ArtistDetailsArgs(
+                        artist: sectionData[index],
                       ),
-                      child: Text(
-                        sectionData[index].name,
-                        style: TextStyle(
-                          fontWeight: FontWeight.w600,
-                          fontSize: 16,
+                    );
+                  },
+                  child: Column(
+                    children: [
+                      CircleAvatar(
+                        backgroundImage:
+                            NetworkImage(sectionData[index].picture),
+                        radius: 80,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 12.0,
+                          vertical: 8,
+                        ),
+                        child: Text(
+                          sectionData[index].name,
+                          style: TextStyle(
+                            fontWeight: FontWeight.w600,
+                            fontSize: 16,
+                          ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
               scrollDirection: Axis.horizontal,
