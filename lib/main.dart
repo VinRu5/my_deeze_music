@@ -6,6 +6,7 @@ import 'package:my_deeze_music/bloc/album_bloc.dart';
 import 'package:my_deeze_music/bloc/artist_bloc.dart';
 import 'package:my_deeze_music/bloc/favorite_bloc.dart';
 import 'package:my_deeze_music/bloc/music_bloc.dart';
+import 'package:my_deeze_music/bloc/playlist_bloc.dart';
 import 'package:my_deeze_music/bloc/search_bloc.dart';
 import 'package:my_deeze_music/repository/saved_favorite.dart';
 
@@ -25,6 +26,7 @@ void main() async {
       BlocProvider(create: (_) => FavoriteBloc()),
       BlocProvider(create: (_) => AlbumBloc()),
       BlocProvider(create: (_) => ArtistBloc()),
+      BlocProvider(create: (_) => PlaylistBloc()),
     ],
     child: App(),
   ));

@@ -119,4 +119,17 @@ class MusicRepository {
 
     return tracks;
   }
+
+  static Future<PlaylistById> getPlaylist(Playlist playlist) async {
+    final url = Uri.parse('https://api.deezer.com/playlist/${playlist.id}');
+
+    final response = await http.get(url);
+
+    final jsonData = json.decode(response.body);
+
+    final playlistParse =
+        PlaylistById.fromData(jsonData as Map<String, dynamic>);
+
+    return playlistParse;
+  }
 }

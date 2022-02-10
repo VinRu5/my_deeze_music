@@ -16,7 +16,6 @@ class SectionHorizontal extends StatelessWidget {
   }) : super(key: key);
 
   void openDetails(BuildContext context, dynamic data) {
-    print(data.runtimeType);
     switch (data.runtimeType) {
       case Track:
         Navigator.pushNamed(context, TrackDetails.route,

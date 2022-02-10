@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:my_deeze_music/bloc/artist_bloc.dart';
 import 'package:my_deeze_music/pages/artist_details.dart';
 
 class SectionHorizontalCircle extends StatelessWidget {
