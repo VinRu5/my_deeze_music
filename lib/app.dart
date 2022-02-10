@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:my_deeze_music/pages/album_details.dart';
+import 'package:my_deeze_music/pages/artist_details.dart';
 import 'package:my_deeze_music/pages/favorite_page.dart';
 import 'package:my_deeze_music/pages/home_page.dart';
+import 'package:my_deeze_music/pages/playlist_details.dart';
+import 'package:my_deeze_music/pages/podcast_details.dart';
 import 'package:my_deeze_music/pages/podcast_page.dart';
 import 'package:my_deeze_music/pages/search_page.dart';
+import 'package:my_deeze_music/pages/track_details.dart';
 
 class App extends StatelessWidget {
   const App({Key? key}) : super(key: key);
@@ -17,6 +22,12 @@ class App extends StatelessWidget {
           PodcastPage.route: (_) => PodcastPage(),
           FavoritePage.route: (_) => FavoritePage(),
           SearchPage.route: (_) => SearchPage(),
+          AlbumDetails.route: (_) => AlbumDetails(),
+          ArtistDetails.route: (_) => ArtistDetails(),
+          PlaylistDetails.route: (_) => PlaylistDetails(),
+          PodcastDetails.route: (_) => PodcastDetails(),
+          TrackDetails.route: (_) =>
+              TrackDetails(arg: settings.arguments as TrackDetailsArgs),
         };
 
         return MaterialPageRoute(builder: routes[settings.name]!);

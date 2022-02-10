@@ -52,7 +52,7 @@ class _BodyHomeState extends State<BodyHome> {
                   title: 'Top Artisti',
                   sectionData: artists,
                 ),
-                SectionHorizontalTrack(
+                SectionHorizontal(
                   title: 'Le canzoni più ascoltate del momento',
                   sectionData: tracks,
                 ),
