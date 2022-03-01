@@ -13,42 +13,39 @@ class ButtonFavorite extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<FavoriteBloc, FavoriteBlocState>(
+    return BlocConsumer<FavoriteBloc, FavoriteBlocState>(
+        listener: (context, state) {},
         builder: (context, state) {
-      if (state is FavoriteBlocStateLoading) {
-        return Loading();
-      } else {
-        final favorites = (state as FavoriteBlocStateLoaded).favorites;
-        final favoriteSong =
-            favorites.any((favorite) => favorite.track.id == track.id);
+          if (state is FavoriteBlocStateLoading) {
+            return Loading();
+          } else {
+            final favorites = (state as FavoriteBlocStateLoaded).favorites;
+            final favoriteSong =
+                favorites.any((favorite) => favorite.track.id == track.id);
 
-        return Positioned(
-          bottom: 10,
-          right: 10,
-          child: IconButton(
-            icon: favoriteSong
-                ? Icon(
-                    Icons.favorite,
-                    color: Colors.white70,
-                    size: 25,
-                  )
-                : Icon(
-                    Icons.favorite_outline,
-                    color: Colors.white70,
-                    size: 25,
-                  ),
-            onPressed: () {
-              if (favoriteSong) {
-                BlocProvider.of<FavoriteBloc>(context)
-                    .add(FavoriteBlocEventRemove(track));
-              } else {
-                BlocProvider.of<FavoriteBloc>(context)
-                    .add(FavoriteBlocEventAdd(track));
-              }
-            },
-          ),
-        );
-      }
-    });
+            return IconButton(
+              icon: favoriteSong
+                  ? Icon(
+                      Icons.favorite,
+                      color: Colors.white70,
+                      size: 25,
+                    )
+                  : Icon(
+                      Icons.favorite_outline,
+                      color: Colors.white70,
+                      size: 25,
+                    ),
+              onPressed: () {
+                if (favoriteSong) {
+                  BlocProvider.of<FavoriteBloc>(context)
+                      .add(FavoriteBlocEventRemove(track));
+                } else {
+                  BlocProvider.of<FavoriteBloc>(context)
+                      .add(FavoriteBlocEventAdd(track));
+                }
+              },
+            );
+          }
+        });
   }
 }
