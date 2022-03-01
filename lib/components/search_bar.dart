@@ -4,7 +4,7 @@ import 'package:my_deeze_music/bloc/search_bloc.dart';
 import 'package:my_deeze_music/theme/colors.dart';
 
 class SearchBar extends StatelessWidget {
-  TextEditingController searchString = TextEditingController();
+  final TextEditingController searchString = TextEditingController();
   SearchBar({Key? key}) : super(key: key);
 
   @override
